@@ -15,10 +15,21 @@
 </head>
 <body class="text-[#4e342e]">
 
-
-<nav class="bg-[#fdf6f0] shadow-md px-8 py-4 flex justify-between items-center font-serif">
+<!-- ✅ Responsive Navbar -->
+<nav class="bg-[#fdf6f0] shadow-md px-8 py-4 flex justify-between items-center font-serif relative z-50">
   <div class="text-2xl font-bold text-[#6b4f3b]">SPU Café ☕</div>
-  <ul class="flex space-x-6 text-lg">
+
+  <!-- Hamburger icon -->
+  <div class="md:hidden">
+    <button id="menuBtn" class="text-[#6b4f3b] focus:outline-none">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Menu items -->
+  <ul id="menuItems" class="hidden md:flex space-y-4 md:space-y-0 md:space-x-6 flex-col md:flex-row text-lg absolute md:static top-full left-0 w-full md:w-auto bg-[#fdf6f0] md:bg-transparent px-6 py-4 md:p-0">
     <li class="transition-transform duration-200 hover:scale-110">
       <a href="/" class="hover:text-[#a1887f] font-bold hover:text-xl transition-all duration-300">หน้าแรก</a>
     </li>
@@ -40,10 +51,10 @@
   </ul>
 </nav>
 
+<!-- ✅ Promotions Section -->
 <section class="px-6 py-12">
   <h2 class="text-center text-3xl font-bold mb-10">🎉 โปรโมชั่นสุดพิเศษ</h2>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-
 
     <div class="bg-white rounded-xl shadow-md p-4 text-center">
       <img src="https://i.pinimg.com/736x/e3/83/f9/e383f9aba12fcabbffd116323690fb57.jpg" class="rounded-lg shadow mb-3 mx-auto">
@@ -52,7 +63,6 @@
       <p class="text-[#4e342e] text-2xl font-bold mb-3">64 บาท</p>
       <button onclick="addToCart('Latte', 'เอสเพรสโซ่ + นมสดอุ่น', 64)" class="px-4 py-2 bg-[#6b4f3b] text-white rounded-full hover:bg-[#4e342e] transition">สั่งซื้อ</button>
     </div>
-
 
     <div class="bg-white rounded-xl shadow-md p-4 text-center">
       <img src="https://i.pinimg.com/736x/cb/48/db/cb48db04009801523739569e0f33cfc3.jpg" class="rounded-lg shadow mb-3 mx-auto">
@@ -65,12 +75,19 @@
   </div>
 </section>
 
-
+<!-- ✅ Toast -->
 <div id="toast" class="fixed bottom-5 right-5 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg hidden z-50">
   ✅ เพิ่มสินค้าในตะกร้าแล้ว
 </div>
 
+<!-- ✅ Footer -->
+<footer class="bg-[#4e342e] text-white text-center py-6 mt-16 text-sm leading-relaxed font-serif">
+  <p>SPU Café – ร้านกาแฟสุดอบอุ่นในมหาวิทยาลัยศรีปทุม ☕</p>
+  <p class="mt-1">เปิดบริการทุกวัน จันทร์–ศุกร์ เวลา 8:00–17:00 น. โทร : 01-234-5678</p>
+  <p class="mt-1">ติดต่อสอบถามหรือจองที่นั่ง Line ID : <span class="text-pink-300">@spucafe</span> หรือ Instagram: <span class="text-pink-300">@spu.cafe</span></p>
+</footer>
 
+<!-- ✅ Scripts -->
 <script>
   function addToCart(title, desc, price) {
     const item = { title, desc, price };
@@ -88,18 +105,13 @@
       toast.classList.add("hidden");
     }, 3000);
   }
+
+  const menuBtn = document.getElementById("menuBtn");
+  const menuItems = document.getElementById("menuItems");
+  menuBtn.addEventListener("click", () => {
+    menuItems.classList.toggle("hidden");
+  });
 </script>
-<footer class="bg-[#4e342e] text-white text-center py-6 mt-16 text-sm leading-relaxed font-serif">
-  <p>
-    SPU Café – ร้านกาแฟสุดอบอุ่นในมหาวิทยาลัยศรีปทุม ☕
-  </p>
-  <p class="mt-1">
-    เปิดบริการทุกวัน จันทร์–ศุกร์ เวลา 8:00–17:00 น. โทร : 01-234-5678
-  </p>
-  <p class="mt-1">
-    ติดต่อสอบถามหรือจองที่นั่ง Line ID : <span class="text-pink-300">@spucafe</span> หรือ Instagram: <span class="text-pink-300">@spu.cafe</span>
-  </p>
-</footer>
 
 </body>
 </html>
